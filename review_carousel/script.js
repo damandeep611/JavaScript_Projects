@@ -1,11 +1,10 @@
 // review carousel code
-const carousel = document.querySelector(".review-carousel");
+
 const reviews = document.querySelectorAll(".review");
 const prevButton = document.querySelector(".prev-button");
 const nextButton = document.querySelector(".next-button");
 
-const totalReviews = reviews.length;
-const visibleReviews = 3;
+
 let currentIndex = 0;
 
 function showReview(index) {

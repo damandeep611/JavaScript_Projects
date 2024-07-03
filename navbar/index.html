@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #313131;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #3e4270;
+        color: aliceblue;
+        padding: 1.2rem;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .btn-white {
+        background-color: #fff;
+        color: #313131;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 0.5rem 0.6rem;
+        border: 2px solid #313131;
+        transition: all 0.2s ease;
+      }
+      .btn-white:hover {
+        background-color: transparent;
+        color: #fff;
+      }
+      .btn-yellow {
+        background-color: #858202;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 0.5rem 0.6rem;
+        border: 2px solid #313131;
+        transition: all 0.2s ease;
+      }
+      .btn-yellow:hover {
+        background-color: transparent;
+        color: #fff;
+      }
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+      }
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+      /* responsive navbar properties  */
+      @media (max-width: 700px) {
+        .nav-menu {
+          position: fixed;
+          flex-direction: column;
+          background-color: #3e4270;
+          top: 4rem;
+          left: -100%;
+          padding: 2rem;
+          width: 50%;
+          height: calc(100% - 4rem);
+          text-align: center;
+          transition: 0.3s;
+        }
+        .nav-menu.active {
+          left: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .user-btn {
+          display: none;
+        }
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-box">
+        <a class="logo" href="#">Oculus</a>
+      </div>
+      <!-- nav menu -->
+
+      <ul class="nav-menu">
+        <li><a href="/navbar/index.html">Blog</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+      <div class="user-btn">
+        <a class="btn-white" href="#">Login</a>
+        <a class="btn-yellow" href="#">Sign Up</a>
+      </div>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <!-- js -->
+    <script>
+      //
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+      // event listener to hide the navbar when any menu item is clicked 
+      document.querySelector(".nav-menu li").forEach((n) => {
+        n.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        })
+      });
+    </script>
+  </body>
+</html>
