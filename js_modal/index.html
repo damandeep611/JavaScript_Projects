@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js Modal</title>
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .modal {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      right: 20%;
+      z-index: 99;
+      max-width: 500px;
+      background-color:#212121;
+      color: #fff;
+      border: 1px solid black;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem ;
+      border-radius: 4px;
+      flex-direction: column;
+      justify-content: center;
+      display: none;
+    }
+    .flex {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+    }
+    .email-btn {
+      background-color: #212121;
+      color: #fff;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    #email-input {
+      padding: 1rem;
+    }
+    .modal.visible {
+      display: block;
+    }
+    
+    #modal-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      cursor: pointer;
+      background-color: #212121;
+      color: #fff;
+      padding: 1rem;
+    }
+    .btn-close {
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 5px;
+      padding: 0.2rem 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  
+      <div class="modal ">
+        <div class="flex">
+          <img width="48" height="48" src="https://img.icons8.com/doodle/48/user.png" alt="user"/>
+          <button class="btn-close">X</button>
+        </div>
+        <div>
+          <h2>Stay in touche</h2>
+        <p>This is a dummy newsletter form so don't bother trying to test it,Anyways</p>
+        </div>
+        <input id="email-input" type="email" placeholder="Testitout@world.com">
+        <button class="email-btn">Subscribe to Newsletter</button>
+      </div>
+     <section class="section-modal">
+      <button id="modal-btn">Js Modal</button>
+     </section>
+  
+
+  <!-- Javascript -->
+  <script>
+    const modal = document.querySelector(".modal");
+    const modalBtn = document.querySelector("#modal-btn");
+    const closeModal = document.querySelector(".btn-close");
+
+    modalBtn.addEventListener("click", () => {
+      modalBtn.classList.toggle("visible")
+      modal.classList.toggle("visible");
+    })
+    closeModal.addEventListener("click", ()=> {
+      closeModal.classList.remove("visible");
+      modal.classList.remove("visible");
+    })
+
+  </script>
+</body>
+</html>
