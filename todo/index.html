@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo App</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: 0;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 4rem;
+      }
+      li {
+        position: relative;
+        list-style: none;
+        background-color: rgb(106, 115, 122);
+        border: 1px solid gray;
+        padding: 0.5rem 5rem;
+        margin: 0.2rem;
+      }
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px 16px 12px 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="todoBox">
+      <input type="text" name="addTask" id="addTask" />
+      <button id="addNow" onclick="newElement()">Add</button>
+    </div>
+    <div id="todoList">
+      <ul id="myList">
+        <li>Hit the Gym</li>
+        <li>Master JavaScript</li>
+        <li>Python Projects</li>
+        <li>Get Locked Innnnn</li>
+      </ul>
+    </div>
+    <!-- ==============js======== -->
+    <script>
+      let createX = document.getElementsByTagName("li");
+      let i;
+      for (i = 0; i < createX.length; i++) {
+        let span = document.createElement("span");
+        let cross = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(cross);
+        createX[i].appendChild(span);
+      }
+      // click on cross to remove item list 
+      let closeBtn = document.getElementsByClassName("close");
+      let j;
+      for(j =0; j < closeBtn.length; j++){
+        closeBtn[j].onclick = function(){
+          let div = this.parentElement;
+          div.style.display = "none";
+        }
+      }
+      //*******error for this close btn as new items don't close ************************
+      // click on button to create new to do task
+      function newElement() {
+        let list = document.createElement("li");
+        let inputValue = document.getElementById("addTask").value;
+        let text = document.createTextNode(inputValue);
+        list.appendChild(text);
+        if (inputValue === "") {
+          alert("you must write something");
+        } else {
+          document.getElementById("myList").appendChild(list);
+        }
+      }
+    </script>
+  </body>
+</html>
